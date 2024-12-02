@@ -26,7 +26,7 @@ func countOccurrences(arr []int, target int) int {
 	return count
 }
 
-func Day1part1() {
+func Day1() {
 	readFile, err := os.Open("./Day1/input")
 
 	if err != nil {
@@ -44,33 +44,12 @@ func Day1part1() {
 	}
 	sort.Ints(nums1)
 	sort.Ints(nums2)
-	tot := 0
+	part1 := 0
+	part2 := 0
 	for i := 0; i < len(nums1); i++ {
-		tot += absInt(nums1[i] - nums2[i])
-	}
-	fmt.Println(tot)
-}
-
-func Day1part2() {
-	readFile, err := os.Open("./Day1/input")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
-	nums1 := []int{}
-	nums2 := []int{}
-	for fileScanner.Scan() {
-		num1, _ := strconv.Atoi(strings.Split(fileScanner.Text(), "   ")[0])
-		num2, _ := strconv.Atoi(strings.Split(fileScanner.Text(), "   ")[1])
-		nums1 = append(nums1, num1)
-		nums2 = append(nums2, num2)
-	}
-	tot := 0
-	for i := 0; i < len(nums1); i++ {
-
-		tot += nums1[i] * countOccurrences(nums2, nums1[i])
+		part1 += absInt(nums1[i] - nums2[i])
+		part2 += nums1[i] * countOccurrences(nums2, nums1[i])
 
 	}
-	fmt.Println(tot)
+	fmt.Println(part1, part2)
 }
