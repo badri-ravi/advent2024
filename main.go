@@ -1,6 +1,9 @@
 package main
 
+import "advent2024/Day3"
+
 func main() {
 
-	//Day2.Day2()
+	Day3.Day3()
+
 }
